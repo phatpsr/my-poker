@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NameList from "../components/NameList";
 import PokeResult from "../components/PokeResult";
 import Icon from "../components/Icon";
@@ -6,17 +6,17 @@ import Icon from "../components/Icon";
 function Poker() {
   const points = [
     { name: "Shirtless", value: 0 },
-    { name: "S", value: 1 },
-    { name: "M", value: 2 },
-    { name: "L", value: 3 },
-    { name: "XL", value: 5 },
-    { name: "XXL", value: 8 },
-    { name: "XXXL", value: 13 },
+    { name: "XS", value: 1 },
+    { name: "S", value: 2 },
+    { name: "M", value: 3 },
+    { name: "L", value: 5 },
+    { name: "XL", value: 8 },
+    { name: "XXL", value: 13 },
   ];
 
+  const [isShowResult, setIsShowResult] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [myPoint, setMyPoint] = useState(0);
-  const [isShowResult, setShowResult] = useState(false);
 
   return (
     <div className="container mt-5">
@@ -50,7 +50,7 @@ function Poker() {
             type="button"
             className="btn btn-warning"
             onClick={() => {
-              setShowResult(true);
+              setIsShowResult(true);
             }}
           >
             <Icon name="lightning" /> Show Results
@@ -59,7 +59,7 @@ function Poker() {
             type="button"
             className="btn btn-warning"
             onClick={() => {
-              setShowResult(false);
+              setIsShowResult(false);
               setSelectedIndex(-1);
               setMyPoint(0);
             }}
@@ -70,7 +70,7 @@ function Poker() {
       </div>
       <div className="row">
         <div className="col">
-          <NameList name="Tai" point={myPoint} isShowResult={isShowResult} />
+          <NameList name="Tai" point={myPoint} isShowResult={isShowResult} selectedIndex={selectedIndex} />
         </div>
         <div className="col">
           <PokeResult />
