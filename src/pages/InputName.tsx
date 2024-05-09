@@ -6,6 +6,7 @@ function InputName() {
     event.preventDefault();
     navigate("/poker")
   };
+
   return (
     <div className="container mt-5">
       <h1>My Poker</h1>
